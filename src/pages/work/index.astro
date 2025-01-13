@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
 import { dateRange } from "@lib/utils";
-import { WORK } from "@consts";
+import { SOCIALS, WORK } from "@consts";
 
 const collection = (await getCollection("work"))
   .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf());
@@ -19,8 +19,27 @@ const work = await Promise.all(
 <PageLayout title={WORK.TITLE} description={WORK.DESCRIPTION}>
   <Container>
     <div class="space-y-10">
-      <div class="animate font-semibold text-black dark:text-white">
+      <div class="animate font-semibold text-black dark:text-white flex items-center justify-between">
         Work
+        <a href={SOCIALS.find(social => social.NAME === "cv")?.HREF} target="_blank" rel="noopener noreferrer" class="relative group w-fit flex pl-8 pr-3 py-1.5 flex-nowrap rounded border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="absolute top-1/2 left-2 -translate-y-1/2 size-4 stroke-2 fill-none stroke-current"
+            viewBox="0 0 24 24"
+            stroke-linecap="round"
+            stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <g
+                class="group-hover:translate-y-[2px] transition-all duration-300"
+                transform-origin="12px 9px">
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" x2="12" y1="15" y2="3"></line>
+              </g>
+          </svg>
+          <div class="text-sm">
+            Download CV
+          </div>
+        </a>
       </div>
       <ul class="flex flex-col space-y-4">
         { 
@@ -29,9 +48,12 @@ const work = await Promise.all(
               <div class="text-sm opacity-75">
                 {dateRange(entry.data.dateStart, entry.data.dateEnd)}
               </div>
-              <div class="font-semibold text-black dark:text-white">
-                {entry.data.company}
-              </div>
+              <a href={entry.data.link} target="_blank" rel="noopener noreferrer" class="group">
+                <div class="font-semibold text-black dark:text-white">
+                  {entry.data.company} 
+                  <span class="inline-block text-sm transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300">&nearr;</span>
+                </div>
+              </a>
               <div class="text-sm opacity-75">
                 {entry.data.role}
               </div>
@@ -42,10 +64,6 @@ const work = await Promise.all(
           ))
         }
       </ul>
-<!-- 
-      <ul class="animate flex flex-col gap-4">
-
-      </ul> -->
     </div>
   </Container>
 </PageLayout>
