@@ -1,15 +1,9 @@
 ---
 import { SITE } from "@consts";
+
+const year = new Date().getFullYear();
 ---
 
 <div>
-  &copy; <span id="year" /> {`|`} {SITE.NAME}
+  &copy; <span>{year}</span> {`|`} {SITE.NAME}
 </div>
-
-<script>
-  const yearNode = document.getElementById("year");
-
-  if (yearNode) {
-    yearNode.textContent = new Date().getFullYear().toString();
-  }
-</script>
