@@ -1,7 +1,7 @@
 ---
-import Container from "@components/Container.astro";
+import Container from "./Container.astro";
 import BackToTop from "@components/BackToTop.astro";
-import YearDisplay from "@components/YearDisplay.astro";
+import YearDisplay from "./YearDisplay.astro";
 ---
 
 <footer class="animate">
@@ -13,7 +13,7 @@ import YearDisplay from "@components/YearDisplay.astro";
     </div>
     <div class="flex justify-between items-center">
       <YearDisplay />
-      <div class="flex flex-wrap gap-1 items-center">
+      <div class="flex gap-2 items-center">
         <button
           id="light-theme-button"
           aria-label="Light theme"

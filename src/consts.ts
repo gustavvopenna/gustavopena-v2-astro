@@ -39,6 +39,6 @@ export const SOCIALS: Socials = [
   },
   { 
     NAME: "cv",
-    HREF: "https://drive.google.com/file/d/1kdkLuGlBr7B8Gk_wnh03d13Vlu8Y4jhg/view?usp=sharing"
+    HREF: "https://drive.google.com/file/d/176IM0ujNl1DrXOmUirWyugX534FeDOue/view?usp=sharing"
   }
 ];
